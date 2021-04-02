@@ -1,0 +1,12 @@
+#box {
+    width: 150px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }
+
+.b1 {
+    position: relative;
+    left: 405px;
+    bottom: 130px;
+}
