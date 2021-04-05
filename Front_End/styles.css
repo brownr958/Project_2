@@ -2,11 +2,49 @@
     width: 150px;
     height: 40px;
     padding: 10px;
-    border: 1px solid #aaaaaa;
-  }
+    border: 1px solid #aaaaaa;}
 
-.b1 {
+.c {
     position: relative;
     left: 405px;
-    bottom: 130px;
-}
+    bottom: 130px;}
+
+.fb {
+  position: relative;
+  left: 575px;
+  bottom: 335px;}
+
+.sb {
+  position: relative;
+  left: 520px;
+  bottom: 440px;}
+
+.tb {
+  position: relative;
+  left: 235px;
+  bottom: 335px;}
+
+.ss {
+  position: relative;
+  left: 290px;
+  bottom: 440px;}
+
+.lf {
+  position: relative;
+  left: 180px;
+  bottom: 555px;}
+
+.cf {
+  position: relative;
+  left: 405px;
+  bottom: 615px;}
+
+.rf {
+  position: relative;
+  left: 630px;
+  bottom: 555px;}
+
+.dh {
+  position: relative;
+  left: 575px;
+  bottom: 195px;}
