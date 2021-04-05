@@ -1,5 +1,7 @@
 var tbody = d3.select('tbody');
 
+
+
 console.log(data);
 
 data.forEach(function(baseballdata) {
@@ -12,5 +14,9 @@ data.forEach(function(baseballdata) {
     });
 });
 
-console.log(data.Position)
+$(document).ready(function() {
+    $('#player-table').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
   
