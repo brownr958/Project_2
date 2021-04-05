@@ -12,5 +12,5 @@ data.forEach(function(baseballdata) {
     });
 });
 
-
+console.log(data.Position)
   
