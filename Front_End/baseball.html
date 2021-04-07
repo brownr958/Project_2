@@ -17,14 +17,18 @@
     }
     
     function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
+      td_string = $(ev.target).find('td')[1]
+      ev.dataTransfer.setData("text", td_string.innerHTML);
     }
     
     function drop(ev) {
       ev.preventDefault();
       var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
-      ev.target.textContent = "This is the player info";
+      target = $(ev.target)
+      target.append(data)
+      // ev.target.innerHTML.append(data)
+      // ev.target.appendChild(document.getElementById(data));
+      // ev.target.textContent = data;
     }
   </script>
 
