@@ -11,6 +11,7 @@ CORS(app, resources={
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ORIGINS'] = '*'
 app.config['DEBUG'] = True
+app.config['JSON_SORT_KEYS'] = False
 
 # Import our pymongo library, which lets us connect our Flask app to our Mongo database.
 import pymongo
