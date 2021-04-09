@@ -36,7 +36,20 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
     }
 });
 
-
+d3.json("all_data.json").then((data)=>{
+    var ids = data.map(x => x.Season);
+    var season =  data.map(x => x.WAR);
+    var trace1 = {
+        x: ids,
+        y: season,
+        type: "bar"
+};
+    var nfo = [trace1];
+    var layout = {
+        title: "'Bar' Chart"
+};
+    Plotly.newPlot("plot", nfo, layout);
+});
 
 
 
