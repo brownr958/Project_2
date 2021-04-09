@@ -13,6 +13,8 @@
   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script>
+    var positions = {}
+
     function allowDrop(ev) {
       ev.preventDefault();
     }
@@ -26,7 +28,30 @@
       ev.preventDefault();
       var data = ev.dataTransfer.getData("text");
       target = $(ev.target)
+      target.empty()
       target.append(data)
+      console.log("Drop event ---")
+      positions['cf'] = d3.select(".cf").text()
+      positions['c'] = d3.select(".c").text()
+      positions['fb'] = d3.select(".fb").text()
+      positions['sb'] = d3.select(".sb").text()
+      positions['tb'] = d3.select(".tb").text()
+      positions['ss'] = d3.select(".ss").text()
+      positions['lf'] = d3.select(".lf").text()
+      positions['rf'] = d3.select(".rf").text()
+      positions['dh'] = d3.select(".dh").text()
+      
+      filter_list = Object.values(positions).filter(item => item.length > 1)
+      console.log(filter_list)
+
+
+      d3.json(`http:localhost:5000/playerLineup/${filter_list}`).then((data) => {
+          //Put the code to graph the data on plot2
+          
+      }
+      )
+      
+
       // ev.target.innerHTML.append(data)
       // ev.target.appendChild(document.getElementById(data));
       // ev.target.textContent = data;
@@ -92,6 +117,8 @@
         <div id="box" class="dh" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       </div>
       <div class="col-lg-6" id="plot">
+      </div>
+      <div class="col-lg-6" id="plot2">
       </div>
     </div>
   </div>

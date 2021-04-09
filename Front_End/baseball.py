@@ -76,6 +76,22 @@ def WARbySeason():
     # Return the template with the teams list passed in
     return jsonify(data_json)
 
+@app.route('/playerLineup/<players>')
+def playerLineup(players):
+    # Store the entire team collection in a list
+    data = list(all_data.find({'Name':{"$in": players}}))
+    data_json = []
+    for item in data:
+        row = {}
+        # Pick what info you wnat about these players to graph
+        row['Season'] = item['Season']
+        row['WAR'] = item['WAR']
+        
+        data_json.append(row)
+    
+    # Return the template with the teams list passed in
+    return jsonify(data_json)
+
 
 
 if __name__ == "__main__":
