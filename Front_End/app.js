@@ -1,6 +1,6 @@
 var tbody = d3.select('tbody');
 
-
+// CALLING IN OUR FLASK DATA //
 d3.json("http://localhost:5000/allStats").then(function(stats){
     stats.forEach(function(baseballdata) {
         var row = tbody.append("tr");
@@ -9,13 +9,13 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
           cell.text(value);
         });
     });
-
+// CREATING FUNCTION FOR JQUERY LIBRARY TO FORMAT DATA TABLE //
     $(document).ready(function() {
         $('#player-table').DataTable( {
             "pagingType": "full_numbers"
         } );
     } );
-    
+// SETTING THE ID OF EACH TABLE ELEMENT TO USE LATER //
     // Getting the table element
     var rows = document
         .getElementsByTagName("tr");
@@ -35,27 +35,13 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
     }
 });
 
-d3.json("all_data.json").then((data)=>{
-    var ids = data.map(x => x.Season);
-    var season =  data.map(x => x.WAR);
-    var trace1 = {
-        x: ids,
-        y: season,
-        type: "bar"
-};
-    var nfo = [trace1];
-    var layout = {
-        title: "'Bar' Chart"
-};
-    Plotly.newPlot("plot", nfo, layout);
-});
-
 var positions = {}
 
+// SETTING THE DROP FUNCTION FOR DATA TABLE //
 function allowDrop(ev) {
   ev.preventDefault();
 }
-
+// SETTING THE DRAG FUNCTION FOR DATA TABLE //
 function drag(ev) {
   td_string = $(ev.target).find('td')[1].innerHTML + "-" + $(ev.target).find('td')[0].innerHTML + "-" + $(ev.target).find('td')[3].innerHTML
   ev.dataTransfer.setData("text", td_string);
@@ -79,7 +65,7 @@ function drop(ev) {
   
   filter_list = Object.values(positions).filter(item => item.length > 1)
 
-
+// CREATING THE BAR GRAPH //
 d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
       //Put the code to graph the data on plot2
       console.log(data)
@@ -97,7 +83,7 @@ d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
 
 
       
-     title: "'Bar' Chart"
+     title: "WAR Statistics by Player"
      
 };
  Plotly.newPlot("plot2", bar, layouts);
