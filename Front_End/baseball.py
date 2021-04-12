@@ -61,20 +61,6 @@ def allStats():
     # Return the template with the teams list passed in
     return jsonify(data_json)
 
-@app.route('/WAR')
-def WARbySeason():
-    # Store the entire team collection in a list
-    data = list(all_data.find())
-    data_json = []
-    for item in data:
-        row = {}
-        row['Season'] = item['Season']
-        row['WAR'] = item['WAR']
-        
-        data_json.append(row)
-        
-    # Return the template with the teams list passed in
-    return jsonify(data_json)
 
 @app.route('/playerLineup/<query>')
 def playerLineup(query):
