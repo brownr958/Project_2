@@ -20,8 +20,9 @@
     }
     
     function drag(ev) {
-      td_string = $(ev.target).find('td')[1]
-      ev.dataTransfer.setData("text", td_string.innerHTML);
+      td_string = $(ev.target).find('td')[1].innerHTML + "-" + $(ev.target).find('td')[0].innerHTML + "-" + $(ev.target).find('td')[3].innerHTML
+      console.log(td_string)
+      ev.dataTransfer.setData("text", td_string);
     }
     
     function drop(ev) {
@@ -45,10 +46,34 @@
       console.log(filter_list)
 
 
-      d3.json(`http:localhost:5000/playerLineup/${filter_list}`).then((data) => {
+    d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
           //Put the code to graph the data on plot2
+          console.log(data)
+         
+
+          var pos =  data.map(x => x.Name);
+          var pos2 =  data.map(x => x.WAR);
+          var trace2 = {
+            x: pos,
+            y: pos2,
+            type: "bar"
+ };
+          var bar = [trace2];
+          var layouts = {
+          //   yaxis: {
+          //   autotick: false,
+          //   ticks: 'outside',
+          //   tick0: 0,
+          //   dtick: 10,
+          //   ticklen: 108
+          // }
+
           
-      }
+         title: "'Bar' Chart"
+         
+ };
+     Plotly.newPlot("plot2", bar, layouts);
+       }
       )
       
 
