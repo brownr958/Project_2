@@ -1,6 +1,5 @@
 var tbody = d3.select('tbody');
 
-console.log("I am inside app.js")
 
 d3.json("http://localhost:5000/allStats").then(function(stats){
     stats.forEach(function(baseballdata) {
@@ -51,5 +50,59 @@ d3.json("all_data.json").then((data)=>{
     Plotly.newPlot("plot", nfo, layout);
 });
 
+var positions = {}
 
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  td_string = $(ev.target).find('td')[1].innerHTML + "-" + $(ev.target).find('td')[0].innerHTML + "-" + $(ev.target).find('td')[3].innerHTML
+  ev.dataTransfer.setData("text", td_string);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  target = $(ev.target)
+  target.empty()
+  target.append(data)
+  positions['cf'] = d3.select(".cf").text()
+  positions['c'] = d3.select(".c").text()
+  positions['fb'] = d3.select(".fb").text()
+  positions['sb'] = d3.select(".sb").text()
+  positions['tb'] = d3.select(".tb").text()
+  positions['ss'] = d3.select(".ss").text()
+  positions['lf'] = d3.select(".lf").text()
+  positions['rf'] = d3.select(".rf").text()
+  positions['dh'] = d3.select(".dh").text()
+  
+  filter_list = Object.values(positions).filter(item => item.length > 1)
+
+
+d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
+      //Put the code to graph the data on plot2
+      console.log(data)
+     
+
+      var pos =  data.map(x => x.Name);
+      var pos2 =  data.map(x => x.WAR);
+      var trace2 = {
+        x: pos,
+        y: pos2,
+        type: "bar"
+};
+      var bar = [trace2];
+      var layouts = {
+
+
+      
+     title: "'Bar' Chart"
+     
+};
+ Plotly.newPlot("plot2", bar, layouts);
+   }
+  )
+  
+}
 

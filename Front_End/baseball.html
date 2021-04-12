@@ -12,91 +12,21 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script>
-    var positions = {}
 
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-    
-    function drag(ev) {
-      td_string = $(ev.target).find('td')[1].innerHTML + "-" + $(ev.target).find('td')[0].innerHTML + "-" + $(ev.target).find('td')[3].innerHTML
-      console.log(td_string)
-      ev.dataTransfer.setData("text", td_string);
-    }
-    
-    function drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      target = $(ev.target)
-      target.empty()
-      target.append(data)
-      console.log("Drop event ---")
-      positions['cf'] = d3.select(".cf").text()
-      positions['c'] = d3.select(".c").text()
-      positions['fb'] = d3.select(".fb").text()
-      positions['sb'] = d3.select(".sb").text()
-      positions['tb'] = d3.select(".tb").text()
-      positions['ss'] = d3.select(".ss").text()
-      positions['lf'] = d3.select(".lf").text()
-      positions['rf'] = d3.select(".rf").text()
-      positions['dh'] = d3.select(".dh").text()
-      
-      filter_list = Object.values(positions).filter(item => item.length > 1)
-      console.log(filter_list)
-
-
-    d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
-          //Put the code to graph the data on plot2
-          console.log(data)
-         
-
-          var pos =  data.map(x => x.Name);
-          var pos2 =  data.map(x => x.WAR);
-          var trace2 = {
-            x: pos,
-            y: pos2,
-            type: "bar"
- };
-          var bar = [trace2];
-          var layouts = {
-          //   yaxis: {
-          //   autotick: false,
-          //   ticks: 'outside',
-          //   tick0: 0,
-          //   dtick: 10,
-          //   ticklen: 108
-          // }
-
-          
-         title: "'Bar' Chart"
-         
- };
-     Plotly.newPlot("plot2", bar, layouts);
-       }
-      )
-      
-
-      // ev.target.innerHTML.append(data)
-      // ev.target.appendChild(document.getElementById(data));
-      // ev.target.textContent = data;
-    }
-  </script>
 
 </head>
 
-<body style="background: rgb(22, 22, 22);">
-  <div class="wrapper">
+  <body style="background: rgb(22, 22, 22); font-family: Tahoma;">
     <div class="jumbotron text-center" style="background-image: url(https://sentrysportslighting.com/wp-content/uploads/2016/05/athletic-field_panoramic.png); height: 400px; background-position-x: center;">
-      <br>
-      <br>
+      <br><br><br>
       <h1 style="color: white;"><b>Fantasy Baseball Lineup Builder</b></h1>
-      <p style="color: white;">Create a baseball lineup of players' seasons dating from 1969 to 2020 using a salary cap to see how stacked your dream team is.</p>
+      <p style="color: white;">Create a baseball lineup of players' seasons dating from 1969 to 2020 to see how stacked your dream team is.</p>
     </div>
-    <hr size="50px" style="background-color: #ffffff; opacity: inherit;"> 
+    <hr size="50px" style="background-color: #FFFFFF; opacity: inherit;"> 
     <div class="container-fluid" style="margin-top: 50px">
       <div class="row margin-top-50">
         <div class="col-md-10 offset-md-1">
+          <h3 style="color: white;">Find your ideal season for each position, then drag the player to a position on the field.</h3>
           <div id="table-area" class="">
             <table id="player-table" class="table table-dark table-striped table-hover" style="text-align: center;">
               <thead>
@@ -126,8 +56,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
-      <div class="col-lg-6">
+    <div class="row"  style="line-height: 0px;">
+      <div class="col-md-6">
         <svg width="960" height="720">
           <image href="https://i.imgur.com/KtWoklI.jpg" x="0" y="0" width="960" height="720"/>
         </svg>
@@ -141,15 +71,26 @@
         <div id="box" class="rf" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="box" class="dh" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       </div>
-      <div class="col-lg-6" id="plot">
-      </div>
-      <div class="col-lg-6" id="plot2">
+      <div class="col-md-6" id="plot2">
       </div>
     </div>
-  </div>
-
-<!-- <script src="./multiple.min.js"></script> -->
-<!-- <script src="data.js"></script> -->
-<script src="app.js"></script>
-</body>
+    <div class="col-md-10 offset-md-1" id="plot">
+    </div>
+    <br><br>
+    <div class="col-md-10 offset-md-1" style="line-height: 10px; color: white;">
+      <p>AVG - Batting Average</p>
+      <p>OBP - On Base Percentage</p>
+      <p>SLG - Slugging Percentage</p>
+      <p>OPS - On Base Plus Slugging (OBP + SLG)</p>
+      <p>AB - At-Bats</p>
+      <p>H - Hits</p>
+      <p>R - Runs</p>
+      <p>HR - Home Runs</p>
+      <p>RBI - Runs Batted In</p>
+      <p>SB - Stolen Bases</p>
+      <p>Off - Offensive Runs Above Average, component of WAR before Baserunning and Defense are factored</p>
+      <p>WAR - Wins Above Replacement</p>
+    </div>
+  <script src="app.js"></script>
+  </body>
 </html>
