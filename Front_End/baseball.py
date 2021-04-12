@@ -72,25 +72,33 @@ def WARbySeason():
         row['WAR'] = item['WAR']
         
         data_json.append(row)
-    
+        
     # Return the template with the teams list passed in
     return jsonify(data_json)
 
-@app.route('/playerLineup/<players>')
-def playerLineup(players):
-    # Store the entire team collection in a list
-    data = list(all_data.find({'Name':{"$in": players}}))
+@app.route('/playerLineup/<query>')
+def playerLineup(query):
+    query_list = query.split(",")
+    db_queries = []
+    for item in query_list:
+        #this is when its just one player given
+        args_list = item.split("-")
+        player, season, position  = args_list
+        season = int(season)
+        temp = {"Name": player, "Season": season, "Position": position}
+        db_queries.append(temp)
+    print(db_queries)
+    data = list(all_data.find({"$or": db_queries}))
+    print(data)
     data_json = []
     for item in data:
         row = {}
         # Pick what info you wnat about these players to graph
-        row['Season'] = item['Season']
+        row['Name'] = item['Name']
         row['WAR'] = item['WAR']
-        
         data_json.append(row)
-    
-    # Return the template with the teams list passed in
     return jsonify(data_json)
+
 
 
 
