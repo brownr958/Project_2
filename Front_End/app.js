@@ -84,7 +84,7 @@ d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
       var bar = [trace];
       var layouts = {
     title: "WAR Statistics by Player",
-    height: 450,
+    height: 400,
     font: {
         color: 'rgb(199,225,181)'
     }
