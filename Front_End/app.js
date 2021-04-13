@@ -53,6 +53,7 @@ function drop(ev) {
   target = $(ev.target)
   target.empty()
   target.append(data)
+  // Creating targets based on what positions or "boxes" on the field //
   positions['cf'] = d3.select(".cf").text()
   positions['c'] = d3.select(".c").text()
   positions['fb'] = d3.select(".fb").text()
