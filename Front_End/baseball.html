@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="row"  style="line-height: 0px;">
+    <div class="row">
       <div class="col-md-6">
         <svg width="960" height="720">
           <image href="https://i.imgur.com/KtWoklI.jpg" x="0" y="0" width="960" height="720"/>
@@ -71,26 +71,25 @@
         <div id="box" class="rf" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="box" class="dh" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       </div>
-      <div class="col-md-6" id="plot2">
+      <div class="col-md-5" id="plot2">
+        <div class="col-md-10 offset-md-1" style="line-height: 10px; color: #C7E1B5;">
+          <p>AVG - Batting Average</p>
+          <p>OBP - On Base Percentage</p>
+          <p>SLG - Slugging Percentage</p>
+          <p>OPS - On Base Plus Slugging (OBP + SLG)</p>
+          <p>AB - At-Bats</p>
+          <p>H - Hits</p>
+          <p>R - Runs</p>
+          <p>HR - Home Runs</p>
+          <p>RBI - Runs Batted In</p>
+          <p>SB - Stolen Bases</p>
+          <p>Off - Offensive Runs Above Average, component of WAR</p>
+          <p>WAR - Wins Above Replacement</p>
+        </div>
       </div>
     </div>
-    <div class="col-md-10 offset-md-1" id="plot">
-    </div>
     <br><br>
-    <div class="col-md-10 offset-md-1" style="line-height: 10px; color: white;">
-      <p>AVG - Batting Average</p>
-      <p>OBP - On Base Percentage</p>
-      <p>SLG - Slugging Percentage</p>
-      <p>OPS - On Base Plus Slugging (OBP + SLG)</p>
-      <p>AB - At-Bats</p>
-      <p>H - Hits</p>
-      <p>R - Runs</p>
-      <p>HR - Home Runs</p>
-      <p>RBI - Runs Batted In</p>
-      <p>SB - Stolen Bases</p>
-      <p>Off - Offensive Runs Above Average, component of WAR before Baserunning and Defense are factored</p>
-      <p>WAR - Wins Above Replacement</p>
-    </div>
+
   <script src="app.js"></script>
   </body>
 </html>

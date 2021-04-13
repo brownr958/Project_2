@@ -73,19 +73,23 @@ d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
 
       var pos =  data.map(x => x.Name);
       var pos2 =  data.map(x => x.WAR);
-      var trace2 = {
+      var trace = {
         x: pos,
         y: pos2,
-        type: "bar"
+        type: 'bar',
+        marker: {
+            color: 'rgb(92,154,42)'
+        },
 };
-      var bar = [trace2];
+      var bar = [trace];
       var layouts = {
-
-
-      
-     title: "WAR Statistics by Player"
-     
+    title: "WAR Statistics by Player",
+    height: 450,
+    font: {
+        color: 'rgb(199,225,181)'
+    }
 };
+
  Plotly.newPlot("plot2", bar, layouts);
    }
   )
