@@ -6,18 +6,19 @@
   <title>Baseball Team Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="../static/styles2.css">
+  <link rel="stylesheet" href="../../Multiple.js/multiple.css">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../../Multiple.js/multiple.min.js"></script>
 </head>
 
-  <body style="background: rgb(22, 22, 22); font-family: Tahoma;">
-    <div class="jumbotron text-center" style="background-image: url(https://sentrysportslighting.com/wp-content/uploads/2016/05/athletic-field_panoramic.png); height: 400px; background-position-x: center;">
-      <br><br><br>
-      <h1 style="color: white;"><b>Fantasy Baseball Lineup Builder</b></h1>
+  <body style="background: rgb(22, 22, 22); font-family: Tahoma; overflow-x: hidden;">
+    <div class="jumbotron text-center" style="background-image: url(../static/Field_Header.png); height: 400px; background-position-x: center;">
+      <h1 style="color: white; padding-top: 100px;"><b>Fantasy Baseball Lineup Builder</b></h1>
       <p style="color: white;">Create a baseball lineup of players' seasons dating from 1969 to 2020 to see how stacked your dream team is.</p>
     </div>
     <hr size="50px" style="background-color: #FFFFFF; opacity: inherit;"> 
@@ -57,7 +58,7 @@
     <div class="row">
       <div class="col-md-6">
         <svg width="960" height="720">
-          <image href="https://i.imgur.com/KtWoklI.jpg" x="0" y="0" width="960" height="720"/>
+          <image href="../static/Clear_Field.png" x="0" y="0" width="960" height="720"/>
         </svg>
         <div id="box" class="c" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="box" class="fb" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -69,6 +70,9 @@
         <div id="box" class="rf" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div id="box" class="dh" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       </div>
+      <div class="test">Content</div>
+      <div class="test">Content</div>
+      <div class="test">Content</div>
       <div class="col-md-5" id="plot2">
         <div class="col-md-10 offset-md-1" style="line-height: 10px; color: #C7E1B5;">
           <p><b>AVG</b> - Batting Average</p>
