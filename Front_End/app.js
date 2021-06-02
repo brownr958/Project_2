@@ -10,6 +10,7 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
         });
     });
 // CREATING FUNCTION FOR JQUERY LIBRARY TO FORMAT DATA TABLE //
+    //https://datatables.net/examples/basic_init/alt_pagination.html//
     $(document).ready(function() {
         $('#player-table').DataTable( {
             "pagingType": "full_numbers"

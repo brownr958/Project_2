@@ -1,1 +1,0 @@
-serverLink = "mongodb+srv://thebaseballers:project2@cluster0.6hxjz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
