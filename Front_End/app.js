@@ -95,6 +95,10 @@ d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
  Plotly.newPlot("plot2", bar, layouts);
    }
   )
+  var multiple = new Multiple({
+    selector: '.test',
+    background: 'linear-gradient(#273463, #8B4256)'
+  });
   
 }
 
