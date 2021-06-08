@@ -62,3 +62,13 @@
   bottom: 0;
   left: 0;
 }
+
+.selector {
+  background-image: linear-gradient(white, black);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;  /* <- here it is */
+
+  width: 100px;
+  height: 100px;
+}

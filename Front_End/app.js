@@ -14,8 +14,8 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
     $(document).ready(function() {
         $('#player-table').DataTable( {
             "pagingType": "full_numbers"
-        } );
-    } );
+        });
+    });
 // SETTING THE ID OF EACH TABLE ELEMENT TO USE LATER //
     // Getting the table element
     var rows = document
@@ -33,20 +33,23 @@ d3.json("http://localhost:5000/allStats").then(function(stats){
         row.setAttribute('draggable','true' )
     
         row.setAttribute('ondragstart','drag(event)')
-    }
-});
+    }});
 
 var positions = {}
 
 // SETTING THE DROP FUNCTION FOR DATA TABLE //
 function allowDrop(ev) {
-  ev.preventDefault();
-}
+  ev.preventDefault();}
+
 // SETTING THE DRAG FUNCTION FOR DATA TABLE //
+var player_data = []
+
 function drag(ev) {
   td_string = $(ev.target).find('td')[1].innerHTML + "-" + $(ev.target).find('td')[0].innerHTML + "-" + $(ev.target).find('td')[3].innerHTML
-  ev.dataTransfer.setData("text", td_string);
-}
+  var key_stats = [$(ev.target).find('td')[4].innerHTML, $(ev.target).find('td')[5].innerHTML, $(ev.target).find('td')[6].innerHTML, $(ev.target).find('td')[7].innerHTML, $(ev.target).find('td')[8].innerHTML, $(ev.target).find('td')[9].innerHTML, $(ev.target).find('td')[10].innerHTML, $(ev.target).find('td')[11].innerHTML, $(ev.target).find('td')[12].innerHTML, $(ev.target).find('td')[13].innerHTML, $(ev.target).find('td')[14].innerHTML]
+  player_data.push(key_stats)
+  console.log(player_data)
+  ev.dataTransfer.setData("text", td_string, player_data);}
 
 function drop(ev) {
   ev.preventDefault();
@@ -69,10 +72,9 @@ function drop(ev) {
 
 // CREATING THE BAR GRAPH //
 d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
-      //Put the code to graph the data on plot2
+      //Put the code to graph the data on warplot
       console.log(data)
      
-
       var pos =  data.map(x => x.Name);
       var pos2 =  data.map(x => x.WAR);
       var trace = {
@@ -86,19 +88,52 @@ d3.json(`http://localhost:5000/playerLineup/${filter_list}`).then((data) => {
       var bar = [trace];
       var layouts = {
     title: "WAR Statistics by Player",
-    height: 400,
+    height: 375,
+    width: 715,
     font: {
         color: 'rgb(199,225,181)'
-    }
-};
-
- Plotly.newPlot("plot2", bar, layouts);
-   }
-  )
-  var multiple = new Multiple({
-    selector: '.test',
-    background: 'linear-gradient(#273463, #8B4256)'
+    }};
+ Plotly.newPlot("warplot", bar, layouts);
+   })
+  new Multiple({
+    selector: '.multi.age',
+    background: 'linear-gradient(#5B992B, #375B1A)',
+    affectText: false
   });
-  
+  new Multiple({
+    selector: '.multi.hr',
+    background: 'linear-gradient(rgb(70, 106, 177), #32A668)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.abhr',
+    background: 'linear-gradient(#5B992B, #375B1A)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.sbs',
+    background: 'linear-gradient(rgb(70, 106, 177), #32A668)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.avg',
+    background: 'linear-gradient(#5B992B, #375B1A)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.obp',
+    background: 'linear-gradient(rgb(70, 106, 177), #32A668)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.slg',
+    background: 'linear-gradient(#5B992B, #375B1A)',
+    affectText: false
+  });
+  new Multiple({
+    selector: '.multi.ops',
+    background: 'linear-gradient(rgb(70, 106, 177), #32A668)',
+    affectText: false
+  });
 }
 

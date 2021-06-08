@@ -52,9 +52,23 @@
   left: 575px;
   bottom: 515px;}
 
-  #plot {
-    background-color: lightblue !important;
-}
 .main-svg {
     background-color: transparent !important;
-}  
+}
+
+div p b, th {
+  color: #C7E1B5;
+}
+
+.multi {
+  position: relative;
+  width: 175px;
+  height: 175px;
+  text-align: center;
+  padding: 0px 20px;
+  color: white;
+  display: inline-block;
+  margin-bottom: 2px;
+  z-index: 1;
+  line-height: normal;
+}
