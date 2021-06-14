@@ -71,10 +71,12 @@ def playerLineup(query):
     for item in query_list:
         #Form an array based on players picked by name, seson, and position
         args_list = item.split("-")
-        player, season, position  = args_list
+        print(args_list)
+        position, season, team, player, none  = args_list
         season = int(season) #Season needs to be specified as an interger to not create Type Error
         temp = {"Name": player, "Season": season, "Position": position}
-        #appen data for player stats
+        print(temp)
+        #append data for player stats
         db_queries.append(temp)
     print(db_queries)
     #appended data needs to run through the database and pull players based on results
