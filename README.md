@@ -1,6 +1,6 @@
 # Baseball Dream Team
 
-Welcome to our 2nd major project for the UNC Data Science Boot Camp. The requirements for the project were to provide a visualization of data and to include a Python Flask-powered API, an HTML with CSS and JavaScript, and at least one database. When it came to the visualization itself, there was more freedom as to what the project could cover. Some additional requirements were to include at least one JS library that was not covered in class, have a dataset with at least 100 records, include some form of user-driven interaction, and have the visualization include at least three views.
+Welcome to our second major project for the UNC Data Science Boot Camp. The requirements for the project were to provide a visualization of data and to include a Python Flask-powered API, an HTML with CSS and JavaScript, and at least one database. When it came to the visualization itself, there was more freedom as to what the project could cover. Some additional requirements were to include at least one JS library that was not covered in class, have a dataset with at least 100 records, include some form of user-driven interaction, and have the visualization include at least three views.
 
 With our project, our group with members Ryan Brown, Austin Williams, Micah West, and Greg Parker decided to make a visualization that allows a user to build their own baseball lineup composed of different players' seasons dating from 1969 to 2020.
 
